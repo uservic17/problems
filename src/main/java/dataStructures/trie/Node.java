@@ -26,6 +26,9 @@ public class Node {
   Integer getCount() {
     return value;
   }
+  void setCount(int count) {
+    value = count;
+  }
 
   public void makeTerminal() {
     this.value++;

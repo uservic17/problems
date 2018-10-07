@@ -14,11 +14,22 @@ package dataStructures.trie;
  * - value to store value
  * - Reference to the next array to store next char
  */
-public class TrieUsingArrays1 {
+
+/**
+ * todo: more requirements
+ * findAllWords()
+ * delete the node and all parent nodes upto the last terminal node if all child nodes are empty
+ * find all words starting with a prefix.
+ *      Also for auto completion for a prefix, do not run the lookup everytime a user types a char
+ *      Store the past calls
+ *          a. store the state in the node??
+ *          b. Return the node
+ */
+public class TrieUsingNodeArray {
   private Node root;
 
 
-  TrieUsingArrays1() {
+  TrieUsingNodeArray() {
     root = new Node();
     root.setaChar('\u0000');
   }
@@ -78,9 +89,19 @@ public class TrieUsingArrays1 {
     return offset;
   }
 
-  public int find(String str) {
-    checkIfLengthIsZero(str);
+  public int delete(String str) {
     int result = -1;
+    Node node = find(str);
+    if (node != null) {
+      result = node.getCount();
+      node.setCount(0);
+    }
+
+    return result;
+  }
+  public Node find(String str) {
+    checkIfLengthIsZero(str);
+    Node result = null;
     //for every char.. go to the offset and proceed if not null.. if null.. return -1
     //for last char, check if terminal.. if terminal, return the value.. i.e. count.. else return -1
 
@@ -93,7 +114,7 @@ public class TrieUsingArrays1 {
         break;
       }
       if (isLastChar(str, i)) {
-        result = currentNode.getChildren()[offset].getCount();
+        result = currentNode.getChildren()[offset];
         break; //not required but for better readability
       }
       currentNode = currentNode.getChildren()[offset];
