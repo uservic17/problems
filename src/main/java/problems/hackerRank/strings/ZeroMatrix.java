@@ -13,7 +13,6 @@ package problems.hackerRank.strings;
 public class ZeroMatrix {
   static int[][] makeZeroMatrix(int[][] array) {
     //todo clone the array rather than using the original one.. but in interview doing in-place is fine.
-//    int[][] array = input.clone();
     //for real code, better to use the clone
     boolean rowHasZero = false;
     boolean columnHasZero = false;
