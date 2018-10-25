@@ -1,7 +1,7 @@
 package dataStructures.linkedList;
 
 public class MyLinkedList<T> {
-  private Node<T> head;
+  public Node<T> head;
   private Node<T> tail;
 
   public MyLinkedList() {
@@ -123,9 +123,10 @@ class Node<T> {
 
   @Override
   public String toString() {
-    return "Node{" +
-            "next=" + next +
-            ", data=" + data +
-            '}';
+    return "";
+//    return "Node{" +
+//            "next=" + next +
+//            ", data=" + data +
+//            '}';
   }
 }

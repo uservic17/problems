@@ -2,14 +2,14 @@ package dataStructures.linkedList;
 
 public class MyLLDemo {
   public static void main(String[] args) {
-    System.out.println(isCircularList(getCircularList()));
+/*    System.out.println(isCircularList(getCircularList()));
     System.out.println("---------kth to last element");
     System.out.println("3rd element from end in " + getSimpleIntegerList() + " is: " + getKthToLastElementData(getSimpleIntegerList(), 3));
     System.out.println("4th element from end in " + getSimpleIntegerList() + " is: " + getKthToLastElementData(getSimpleIntegerList(), 4));
     System.out.println("11th element from end in " + getSimpleIntegerList() + " is: " + getKthToLastElementData(getSimpleIntegerList(), 11));
     System.out.println("0th element from end in " + getSimpleIntegerList() + " is: " + getKthToLastElementData(getSimpleIntegerList(), 0));
     System.out.println("1st element from end in " + getSimpleIntegerList() + " is: " + getKthToLastElementData(getSimpleIntegerList(), 1));
-    if(!getKthToLastElementData(getSimpleIntegerList(), 3).equals(getKthToLastElementDataWith2Pointers(getSimpleIntegerList(), 3))) {
+    if (!getKthToLastElementData(getSimpleIntegerList(), 3).equals(getKthToLastElementDataWith2Pointers(getSimpleIntegerList(), 3))) {
       System.out.println("#############Not working .. the 2 pointer solution");
     }
 
@@ -19,7 +19,7 @@ public class MyLLDemo {
     System.out.println("0th element from end in (should be null)" + getSimpleIntegerList() + " is: " + getKthToLastElementDataWith2Pointers(getSimpleIntegerList(), 0));
     System.out.println("1st element from end in " + getSimpleIntegerList() + " is: " + getKthToLastElementDataWith2Pointers(getSimpleIntegerList(), 1));
     System.out.println("------kth element from end using recursion");
-    System.out.println("3rd element from end in " + getSimpleIntegerList() + " is: " );
+    System.out.println("3rd element from end in " + getSimpleIntegerList() + " is: ");
     getKthToLastElementDataRecursive(getSimpleIntegerList(), 3);
 
 
@@ -29,8 +29,11 @@ public class MyLLDemo {
     Node<Integer> node1 = getNthNode(list1, 4);
     System.out.println(list1);
     deleteTheGivenNode(list1, node1);
-    System.out.println(list1);
+    System.out.println(list1);*/
 
+    System.out.println("------Reverse a LinkedList------");
+//    System.out.println(isCircularList(reverseLL(getSimpleIntegerList().getHead())));
+    System.out.println("Reverse of is " + reverseLL(getSimpleIntegerList()));
   }
 
   /**
@@ -60,7 +63,7 @@ public class MyLLDemo {
     Node<T> slow = head.next;
     Node<T> fast = head.next.next;
 
-    while(true) {
+    while (true) {
       if (slow == fast) {
         return true;
       }
@@ -76,9 +79,10 @@ public class MyLLDemo {
 
   /**
    * get the kth from end elemnet
+   *
    * @return null if k is greater than the size of the list
    */
-  private static  <T> T  getKthToLastElementData(MyLinkedList<T> list, int k) {
+  private static <T> T getKthToLastElementData(MyLinkedList<T> list, int k) {
     if (k == 0) return null;
     Node<T> head = list.getHead();
     if (head == null) {
@@ -103,9 +107,10 @@ public class MyLLDemo {
 
   /**
    * get the kth from end elemnet using 2 pointers
+   *
    * @return null if k is greater than the size of the list
    */
-  public static  <T> T  getKthToLastElementDataWith2Pointers(MyLinkedList<T> list, int k) {
+  public static <T> T getKthToLastElementDataWith2Pointers(MyLinkedList<T> list, int k) {
     if (k == 0) return null;
     Node<T> head = list.getHead();
     if (head == null) {
@@ -114,7 +119,7 @@ public class MyLLDemo {
     Node<T> first = head;
     Node<T> second = head;
     int index = 1;
-    while (index < k ) {
+    while (index < k) {
       if (first.next == null && index < k) {
         System.out.println("Size of the list is less than K ###");
         return null;
@@ -133,12 +138,13 @@ public class MyLLDemo {
   /**
    * prints get the kth from end elemnet using Recursion
    */
-  public static  <T> void getKthToLastElementDataRecursive(MyLinkedList<T> list, int k) {
+  public static <T> void getKthToLastElementDataRecursive(MyLinkedList<T> list, int k) {
     Node<T> head = list.getHead();
     getKthToLastElementDataRecursive(head, k);
   }
-  private static  <T> int getKthToLastElementDataRecursive(Node<T> node, int k) {
-    if (k == 0 ) {
+
+  private static <T> int getKthToLastElementDataRecursive(Node<T> node, int k) {
+    if (k == 0) {
       System.out.println("null");
     }
     if (node == null) {
@@ -167,7 +173,6 @@ public class MyLLDemo {
   }
 
   /**
-   *
    * @return a circular linked list
    */
   private static MyLinkedList<Integer> getCircularList() {
@@ -205,6 +210,7 @@ public class MyLLDemo {
     return current;
 
   }
+
   /**
    * deletes the given node
    * first approach was bad.. was copying data of next to current for all nodes following that node.
@@ -216,8 +222,23 @@ public class MyLLDemo {
 
     node.data = node.next.data;
     node.next = node.next.next;
+  }
 
+  public static <T> MyLinkedList<T> reverseLL(MyLinkedList<T> list) {
+    reverseLLNodeWise(list.getHead(), list);
+    return list;
+  }
 
+  private static <T> Node<T> reverseLLNodeWise(Node<T> node, MyLinkedList<T> list) {
+
+    if (node.next == null) {
+      list.head = node;
+      return node;
+    }
+    reverseLLNodeWise(node.next, list).next = node;
+    node.next = null;
+
+    return node;
   }
 
 }
