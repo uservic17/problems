@@ -29,11 +29,77 @@ public class MyLLDemo {
     Node<Integer> node1 = getNthNode(list1, 4);
     System.out.println(list1);
     deleteTheGivenNode(list1, node1);
-    System.out.println(list1);*/
+    System.out.println(list1);
 
     System.out.println("------Reverse a LinkedList------");
 //    System.out.println(isCircularList(reverseLL(getSimpleIntegerList().getHead())));
     System.out.println("Reverse of is " + reverseLL(getSimpleIntegerList()));
+    */
+
+    System.out.println("Sum of lists: " + getSumOfListsPerNode(createListFromArgs(new int[]{7,1,6}), createListFromArgs(new int[]{5,9,2})));
+
+  }
+
+  /**
+   * two lists represents one digit of a number in each of there node
+   * for example 321 will be stored as 1->2->3->null
+   * we want to find a list with the sum of 2 numebrs in 2 lists
+   * if there is a carry, add a node in the end
+   * Do it in-place
+   *
+   * @param list1
+   * @param list2
+   * @return
+   */
+  private static MyLinkedList<Integer> getSumOfListsPerNode(MyLinkedList<Integer> list1, MyLinkedList<Integer> list2) {
+
+    Node<Integer> node1 = list1.getHead();
+    Node<Integer> node2 = list2.getHead();
+    Node<Integer> prev = list2.getHead();
+
+    int carry = 0;
+    while (node1 != null && node2 != null) {
+      int sum = node1.getData() + node2.getData() + carry;
+
+      if (sum >= 10) {
+        sum = sum % 10;
+        carry = 1;
+      } else {
+        carry = 0;
+      }
+      node1.data = sum;
+      node2.data = sum;
+      prev = node1;
+      node1 = node1.next;
+      node2 = node2.next;
+    }
+
+    if (node1 == null && node2 == null) {
+      if (carry == 0) {
+        return list1;
+      }
+      else {
+        Node<Integer> newNode = new Node<>(1);
+        prev.next = newNode;
+        return list1;
+      }
+    }
+    MyLinkedList<Integer> list = node1 == null ? list1 : list2;
+    if (carry == 1) {
+      Node<Integer> node = node1 == null ? node2 : node1;
+      while (node != null) {
+        node.data += carry;
+        if (node.data >= 10) {
+          node.data = node.data % 10;
+          carry = 1;
+        } else {
+          return list1;
+        }
+        node = node.next;
+
+      }
+    }
+    return list;
   }
 
   /**
@@ -168,6 +234,15 @@ public class MyLLDemo {
     list.add(5);
     list.add(6);
     list.add(7);
+
+    return list;
+  }
+
+  private static MyLinkedList<Integer> createListFromArgs(int[] ints) {
+    MyLinkedList<Integer> list = new MyLinkedList<>();
+    for (int i : ints) {
+      list.add(i);
+    }
 
     return list;
   }
