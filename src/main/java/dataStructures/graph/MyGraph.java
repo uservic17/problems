@@ -42,6 +42,11 @@ public class MyGraph {
     return E;
   }
 
+  /**
+   * find the number of nodes connected to v directly
+   * @param v
+   * @return
+   */
   public int degree(int v) {
     validateVertex(v);
     return adjList[v].size();
