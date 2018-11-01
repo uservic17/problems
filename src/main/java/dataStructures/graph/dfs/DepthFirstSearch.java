@@ -1,4 +1,6 @@
-package dataStructures.graph;
+package dataStructures.graph.dfs;
+
+import dataStructures.graph.MyGraph;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -9,7 +9,7 @@ public class MyGraph {
   private int E;
   private List<Integer>[] adjList;
 
-  MyGraph(int v) {
+  public MyGraph(int v) {
     if (v < 0) throw new IllegalArgumentException("Number of vertices must be nonnegative");
     V = v;
     E = 0;
@@ -23,7 +23,7 @@ public class MyGraph {
    * Creates a deep copy of given Graph G
    * @param G
    */
-  MyGraph(MyGraph G) {
+  public MyGraph(MyGraph G) {
     this(G.V);
     this.E = G.E;
     for (int i = 0; i < G.V; i++) {

@@ -1,4 +1,6 @@
-package dataStructures.graph;
+package dataStructures.graph.dfs;
+
+import dataStructures.graph.MyGraph;
 
 /**
  *  The {@code DepthFirstSearch} class represents a data type for

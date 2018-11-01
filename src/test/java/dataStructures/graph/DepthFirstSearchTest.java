@@ -1,5 +1,6 @@
 package dataStructures.graph;
 
+import dataStructures.graph.dfs.DepthFirstSearch;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

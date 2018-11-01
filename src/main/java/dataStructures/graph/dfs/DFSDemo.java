@@ -1,4 +1,6 @@
-package dataStructures.graph;
+package dataStructures.graph.dfs;
+
+import dataStructures.graph.MyGraph;
 
 public class DFSDemo {
   public static void main(String[] args) {

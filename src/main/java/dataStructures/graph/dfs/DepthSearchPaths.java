@@ -1,4 +1,6 @@
-package dataStructures.graph;
+package dataStructures.graph.dfs;
+
+import dataStructures.graph.MyGraph;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,12 +16,16 @@ public class DepthSearchPaths {
     int V = graph.getVertices();
     paths = new int[V];
     validateVertex(v);
-    for (int i = 0; i < V; i++) {
-      paths[i] = -1;  //-1 signifies it is not connected.
-    }
+    intializaeArray(V);
     paths[v] = v;
     root = v;
     dfsPath(graph, v);
+  }
+
+  private void intializaeArray(int v) {
+    for (int i = 0; i < v; i++) {
+      paths[i] = -1;  //-1 signifies it is not connected.
+    }
   }
 
   private void dfsPath(MyGraph graph, int v) {
