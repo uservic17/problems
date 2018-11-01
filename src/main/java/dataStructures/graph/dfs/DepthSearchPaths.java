@@ -12,7 +12,7 @@ public class DepthSearchPaths {
   private int[] paths;
   private int root;
 
-  DepthSearchPaths(MyGraph graph, int v) {
+  public DepthSearchPaths(MyGraph graph, int v) {
     int V = graph.getVertices();
     paths = new int[V];
     validateVertex(v);

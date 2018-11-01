@@ -21,7 +21,7 @@ public class BetterDepthFirstSearch {
 
   private boolean[] marked;
   private int count = 0;
-  BetterDepthFirstSearch(MyGraph graph, int root) {
+  public BetterDepthFirstSearch(MyGraph graph, int root) {
     marked = new boolean[graph.getVertices()];
     marked[root] = true;
     validateVertex(root);
