@@ -13,12 +13,20 @@ public class BinaryTree {
     root.insert(4);
     root.insert(5);
     root.insert(6);
+    root.insert(7);
+    root.insert(8);
+    root.insert(9);
+    System.out.println("Printing In Order");
     root.printInOrder(root);
-    System.out.println("\n");
+    System.out.println("\n\nPrint level wise");
     root.printLevelWise(root);
-    System.out.println("\n");
+    System.out.println("\n\nPrint lists at levels/depths using Breadth First Algo");
     for (LinkedList<Node> list : root.listOfDepthsBFS(root)) {
       System.out.println(list);
+    }
+    System.out.println("\n\nPrint lists at levels/depths using Depth First Algo");
+    for (LinkedList<Node> list : root.listOfDepthsDFS(root)) {
+      System.out.println(list.size() + ": " + list);
     }
   }
 }
@@ -28,6 +36,7 @@ class Node {
   private int value;
   private Node left;
   private Node right;
+   int level;
 
   public Node(int value) {
     this.value = value;
@@ -35,7 +44,7 @@ class Node {
 
   @Override
   public String toString() {
-    return "" + value;
+    return "" + value + "(" + level + ")";
   }
 
   void insert(int value) {
@@ -106,13 +115,14 @@ class Node {
     LinkedList<Node> currentList = new LinkedList<>();
     listOfLists.add(currentList);
     int counter = 0;
-    int level = 1;
+    int level = 0;
     ArrayDeque<Node> deque = new ArrayDeque<>();
     deque.addLast(node);
     while (!deque.isEmpty()) {
-      if (counter < Math.pow(2, level) - 1) {
+      if (counter < Math.pow(2, level+1) - 1) {
         Node currentNode = deque.poll();
         currentList.add(currentNode);
+        currentNode.level = level;
         if (currentNode.left != null) {
           deque.addLast(currentNode.left);
         }
@@ -131,8 +141,31 @@ class Node {
     return listOfLists;
   }
 
+  /**
+   * This piece of code does the same thing as above method i.e. add elements at a certain level to a particular list
+   * and then returns the list of all the depth level lists
+   * But it does it in a depth search way. It will add the element at a level to the list and then recursively call the
+   * method to add the left and right children at the level -> level + 1
+   *
+   * @param node
+   * @return
+   */
   List<LinkedList<Node>> listOfDepthsDFS(Node node) {
-    return null;
+    List<LinkedList<Node>> masterList = new ArrayList<>();
+     listOfDepthsDFSPrivate(node, 0, masterList);
+     return masterList;
+  }
+
+  private void listOfDepthsDFSPrivate(Node node, int level, List<LinkedList<Node>> masterList) {
+    if (node != null) {
+      if (masterList.size() <= level) {
+        masterList.add(level, new LinkedList<>());
+      }
+      masterList.get(level).add(node);
+      node.level = level;
+      listOfDepthsDFSPrivate(node.left, level + 1, masterList);
+      listOfDepthsDFSPrivate(node.right, level + 1, masterList);
+    }
   }
 
 
