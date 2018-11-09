@@ -1,7 +1,5 @@
-package dataStructures.stack.sortStack;
+package dataStructures.stacksNQueues.sortStack;
 
-
-import org.junit.Test;
 
 import static org.junit.Assert.*;
 

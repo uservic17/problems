@@ -1,4 +1,4 @@
-package dataStructures.stack;
+package dataStructures.stacksNQueues;
 
 import org.junit.Test;
 

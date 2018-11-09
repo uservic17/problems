@@ -1,4 +1,4 @@
-package dataStructures.stack.setOfStacks;
+package dataStructures.stacksNQueues.setOfStacks;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
@@ -54,7 +54,7 @@ public class SetOfStacks {
           stackNumber++;
           top = -1;
         } else {
-          throw new IllegalStateException("Stack is full. All mini stack are full");
+          throw new IllegalStateException("Stack is full. All mini stacks are full");
         }
       }
     }

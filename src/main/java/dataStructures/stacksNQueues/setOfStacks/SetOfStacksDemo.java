@@ -1,4 +1,4 @@
-package dataStructures.stack.setOfStacks;
+package dataStructures.stacksNQueues.setOfStacks;
 
 public class SetOfStacksDemo {
   public static void main(String[] args) {

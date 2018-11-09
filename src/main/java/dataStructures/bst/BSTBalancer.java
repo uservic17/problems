@@ -34,7 +34,7 @@ public class BSTBalancer {
         parent.right = newNode;
       }
     }
-    getBalancedBSTPrivate(array, 0, leftEnd, newNode);
+    getBalancedBSTPrivate(array, 0, leftEnd, newNode); //should not be 0.. should be leftstart??
     getBalancedBSTPrivate(array, rightStart, end, newNode);
   }
 

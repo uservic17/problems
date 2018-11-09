@@ -1,4 +1,4 @@
-package dataStructures.stack;
+package dataStructures.stacksNQueues;
 
 public class MyStackDemo {
   public static void main(String[] args) {
