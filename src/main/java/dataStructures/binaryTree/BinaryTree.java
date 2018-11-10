@@ -24,8 +24,13 @@ public class BinaryTree {
     for (LinkedList<Node> list : root.listOfDepthsBFS(root)) {
       System.out.println(list);
     }
-    System.out.println("\n\nPrint lists at levels/depths using Depth First Algo");
+    System.out.println("\n\nPrint lists at levels/depths using Depth First Algo, less space than bfs but space for recursion");
     for (LinkedList<Node> list : root.listOfDepthsDFS(root)) {
+      System.out.println(list.size() + ": " + list);
+    }
+
+    System.out.println("\n\nPrint lists at levels/depths using Modified Breadth First Algo, no recursive space even");
+    for (LinkedList<Node> list : root.listOfDepthsModifiedBFS(root)) {
       System.out.println(list.size() + ": " + list);
     }
   }
@@ -36,7 +41,7 @@ class Node {
   private int value;
   private Node left;
   private Node right;
-   int level;
+  int level;
 
   public Node(int value) {
     this.value = value;
@@ -119,7 +124,7 @@ class Node {
     ArrayDeque<Node> deque = new ArrayDeque<>();
     deque.addLast(node);
     while (!deque.isEmpty()) {
-      if (counter < Math.pow(2, level+1) - 1) {
+      if (counter < Math.pow(2, level + 1) - 1) {
         Node currentNode = deque.poll();
         currentList.add(currentNode);
         currentNode.level = level;
@@ -152,8 +157,8 @@ class Node {
    */
   List<LinkedList<Node>> listOfDepthsDFS(Node node) {
     List<LinkedList<Node>> masterList = new ArrayList<>();
-     listOfDepthsDFSPrivate(node, 0, masterList);
-     return masterList;
+    listOfDepthsDFSPrivate(node, 0, masterList);
+    return masterList;
   }
 
   private void listOfDepthsDFSPrivate(Node node, int level, List<LinkedList<Node>> masterList) {
@@ -168,5 +173,35 @@ class Node {
     }
   }
 
+  /**
+   * same thing.. to get the list of depths
+   * but this time with modified breadth search
+   * where we don't use a queue for traversal
+   * rather use parent and current
+   */
+
+  List<LinkedList<Node>> listOfDepthsModifiedBFS(Node node) {
+    List<LinkedList<Node>> masterList = new ArrayList<>();
+    LinkedList<Node> current = new LinkedList<>();
+
+    if (node != null) {
+      current.add(node);
+    }
+
+    while (!current.isEmpty()) {
+      masterList.add(current);
+      LinkedList<Node> parent = current;
+      current = new LinkedList<>();
+      for (Node node1 : parent) {
+        if (node1.left != null) {
+          current.add(node1.left);
+        }
+        if (node1.right != null) {
+          current.add(node1.right);
+        }
+      }
+    }
+    return masterList;
+  }
 
 }
