@@ -39,7 +39,7 @@ class Node {
   void insert (Node node, int value) {
     if (node == null) return;
     if (value == node.value) return;
-    if (value <= node.value) {
+    if (value < node.value) {
       if (node.left == null) {
         node.left = new Node(value);
       } else {
