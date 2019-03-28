@@ -4,6 +4,9 @@ import java.util.*;
 
 public class LongestSubstring {
 
+  /*
+  this is about getting the longest substring with non repeating characters
+   */
 
   public int lengthOfLongestSubstring(String s) {
     return getLongestSubstring(s).length();

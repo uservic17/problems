@@ -7,6 +7,9 @@ import java.util.Set;
 
 public class LongestSubstringBest {
 
+  /*
+  this is about getting the longest substring without repeating characters
+   */
 
   public static int getLongestSubstring(String str) {
     int result = 0;
