@@ -31,8 +31,10 @@ public class TargetSumLeetCodeTopDown {
     public static void main(String[] args) {
         TargetSumLeetCodeTopDown tss = new TargetSumLeetCodeTopDown();
         long start = System.currentTimeMillis();
-        int result = tss.findTargetSumWays(new int[]{25,33,27,23,46,16,10,27,33,2,12,2,29,44,49,40,32,46,7,50}, 4);
+//        int result = tss.findTargetSumWays(new int[]{25,33,27,23,46,16,10,27,33,2,12,2,29,44,49,40,32,46,7,50}, 4);
 //        int result = tss.findTargetSumWays(new int[]{1,1,1,1,1}, 1);
+        int result = tss.findTargetSumWays(new int[]{1,2,7,9,981}, 1000000000);
+
         System.out.println(result);
         System.out.println("Number of calls made: " + tss.calls);
         System.out.println("Time taken: " + (System.currentTimeMillis() - start) + "ms");

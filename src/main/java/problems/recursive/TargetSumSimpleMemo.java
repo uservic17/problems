@@ -5,6 +5,9 @@ import java.util.Map;
 
 //rather than using backtracking and creating all subsets..
 // this is an easier or simpler way.. not particularly easy approach to think about on the spot
+
+//memoing with hashmap is not fast.. it takes only 7.5k calls as compared to 2million calls with recursive..
+//but still runs in 26ms.. and recursive runs in 10-19ms
 public class TargetSumSimpleMemo {
     int calls = 0;
     Map<String, Integer> memo = new HashMap<>();
