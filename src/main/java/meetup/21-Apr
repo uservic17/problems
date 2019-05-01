@@ -1,0 +1,24 @@
+Median of Medians - todo.. was not in the class but was mentioned.
+
+
+Meeting Scheduler
+/*
+TODO - the solution is about jumping through all the start and end points
+also follow up questions - give me the names of the people
+                         - include at least this and this person
+                         -
+ */
+
+ KthLargest = went into design.. a little shaky there
+
+ POW Fast Power
+
+ Shortest Substring containing all query words
+     a x b z c c d a b x c containing a b c
+
+
+ Implement Queue using 2 stacks - EASY.. need to do it pretty quick
+
+ Implement a DS to support - push, pop, getMax (MaxStack)
+
+ Implement MaxQueu (medium) - amortized constant time

@@ -18,6 +18,6 @@ public class FindFactors {
     }
 
     public static void main(String[] args) {
-        System.out.println(allFactors(36));
+        System.out.println(allFactors(32));
     }
 }

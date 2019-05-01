@@ -33,7 +33,7 @@ public class FactorCombination {
                 if (i - 1 >= 0 && available.get(i).equals(available.get(i - 1))) continue;
                 int temp = available.remove(i);
                 for (int j = 0; j < available.size(); j++) {
-                    chosen.
+//                    chosen.
                 }
                 chosen.add(temp);
                 helper(result, available, chosen);
